@@ -13,17 +13,17 @@
             <app-input-checked [stateChecked]="stateChecked"></app-input-checked>
         </div>
         <div class="col bg-secundary pt-4">
-            <div class="btn-group d-flex justify-center" role="group" aria-label="selectType">
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <div class="btn-group d-flex justify-center" role="group" aria-label="select type">
+                <input (click)="changeTypeEmployee($event)" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
                 <label class="btn btn-outline-primary" for="btnradio1">Administrativa</label>
               
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btnradio3">Tecnologia</label>
+                <input (click)="changeTypeEmployee($event)" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio2">Tecnologia</label>
             </div>
             <div class="mt-4">
                 <app-option-select label="Cargo"></app-option-select>
             </div>
-            <div class="w-25">
+            <div *ngIf="typeEmployee === 'administrativa'" class="w-25">
                 <app-input label="Comision %" type="number"></app-input>
             </div>
         </div>
