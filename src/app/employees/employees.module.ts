@@ -10,6 +10,9 @@ import { SharedModule } from '../shared/shared.module';
 import { CreateEmployeeComponent } from './views/create-employee/create-employee.component';
 import { BtnActionComponent } from './components/btn-action/btn-action.component';
 import { InputComponent } from './components/input/input.component';
+import { OptionSelectComponent } from './components/option-select/option-select.component';
+import { RouterModule } from '@angular/router';
+import { InputCheckedComponent } from './components/input-checked/input-checked.component';
 
 
 @NgModule({
@@ -20,12 +23,15 @@ import { InputComponent } from './components/input/input.component';
     TableEmployeesComponent,
     CreateEmployeeComponent,
     BtnActionComponent,
-    InputComponent
+    InputComponent,
+    OptionSelectComponent,
+    InputCheckedComponent
   ],
   imports: [
     CommonModule,
     EmployeesRoutingModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ]
 })
 export class EmployeesModule { }

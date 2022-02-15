@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateEmployeeComponent implements OnInit {
 
+  stateChecked: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {

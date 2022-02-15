@@ -6,23 +6,34 @@
         <div class="col">
             <app-input label="Nombre" type="text"></app-input>
             <app-input label="Fecha de nacimiento" type="date"></app-input>
-            <div class="mt-4">
-                <label for="SelectCountry" class="form-label">Pais</label>
-                <select class="form-select w-75" aria-label="Select country">
-                    <option selected>Seleccionar...</option>
-                    <option value="colombia">Colombia</option>
-                    <option value="venezuela">Venezuela</option>
-                </select>
-            </div>
+            <div class="mt-4"><app-option-select label="Pais"></app-option-select></div>
             <app-input label="Nombre de usuario" type="text"></app-input>
             <app-input label="Fecha de contratacion" type="date"></app-input>
             <label class="form-check-label" for="state">Estado</label>
-            <div class="form-check form-switch">
-                <input class="form-check-input size-checkbox" type="checkbox" role="switch" id="state">
+            <app-input-checked [stateChecked]="stateChecked"></app-input-checked>
+        </div>
+        <div class="col bg-secundary pt-4">
+            <div class="btn-group d-flex justify-center" role="group" aria-label="selectType">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="btnradio1">Administrativa</label>
+              
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio3">Tecnologia</label>
+            </div>
+            <div class="mt-4">
+                <app-option-select label="Cargo"></app-option-select>
+            </div>
+            <div class="w-25">
+                <app-input label="Comision %" type="number"></app-input>
             </div>
         </div>
-        <div class="col bg-secundary">
-            como
+        <div class="d-flex align-items-center">
+            <div class="m-1">
+                <a [routerLink]="['/']">Atras</a>
+            </div>
+            <div class="m-1">
+                <app-btn value="Guardar"></app-btn>
+            </div>
         </div>
     </form>
 

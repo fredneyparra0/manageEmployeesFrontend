@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-primary">
-    <span class="p-1">+</span>
-    Guardar
+<button [type]="type" class="btn btn-primary mt-3">
+    <span *ngIf="icon" class="p-1">{{ icon }}</span>
+    {{ value }}
 </button>
