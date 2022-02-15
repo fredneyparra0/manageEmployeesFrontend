@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { EmployeesRoutingModule } from './employees-routing.module';
 import { ShowEmployeesComponent } from './views/show-employees/show-employees.component';
@@ -14,6 +15,7 @@ import { OptionSelectComponent } from './components/option-select/option-select.
 import { RouterModule } from '@angular/router';
 import { InputCheckedComponent } from './components/input-checked/input-checked.component';
 import { FormComponent } from './components/form/form.component';
+import { TdTableComponent } from './components/td-table/td-table.component';
 
 
 @NgModule({
@@ -27,13 +29,15 @@ import { FormComponent } from './components/form/form.component';
     InputComponent,
     OptionSelectComponent,
     InputCheckedComponent,
-    FormComponent
+    FormComponent,
+    TdTableComponent,
   ],
   imports: [
     CommonModule,
     EmployeesRoutingModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ]
 })
 export class EmployeesModule { }

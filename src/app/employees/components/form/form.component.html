@@ -2,7 +2,13 @@
     <div class="col">
         <app-input *ngIf="typeForm === 'create' || typeForm === 'see'" label="Nombre" type="text"></app-input>
         <app-input disableInput="typeForm" label="Fecha de nacimiento" type="date"></app-input>
-        <div class="mt-4"><app-option-select label="Pais"></app-option-select></div>
+        <div class="mt-4">
+            <app-option-select 
+                label="Pais" 
+                [valueOptions]="countries" 
+                typeOption="countries"
+            ></app-option-select>
+        </div>
         <app-input label="Nombre de usuario" type="text"></app-input>
         <app-input label="Fecha de contratacion" type="date"></app-input>
         <label class="form-check-label" for="state">Estado</label>
@@ -17,7 +23,11 @@
             <label class="btn btn-outline-primary" for="btnradio2">Tecnologia</label>
         </div>
         <div class="mt-4">
-            <app-option-select label="Cargo"></app-option-select>
+            <app-option-select 
+                label="Cargo" 
+                typeOption="employee"
+                [valueOptions]="positions"
+            ></app-option-select>
         </div>
         <div *ngIf="typeEmployee === 'administrativa'" class="w-25">
             <app-input label="Comision %" type="number"></app-input>

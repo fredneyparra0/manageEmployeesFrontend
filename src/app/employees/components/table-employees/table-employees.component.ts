@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableEmployeesComponent implements OnInit {
 
+  fieldsTable: any[] = ['Nombre (Cargo)', 'Edad', 'Fecha de contratacion', 'Acciones'];
+
   constructor() { }
 
   ngOnInit(): void {
