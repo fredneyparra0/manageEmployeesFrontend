@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CreateEmployeeComponent } from './views/create-employee/create-employee.component';
 import { ShowEmployeesComponent } from './views/show-employees/show-employees.component';
 
 const routes: Routes = [
@@ -9,6 +10,14 @@ const routes: Routes = [
       {
         path: '',
         component: ShowEmployeesComponent
+      },
+      {
+        path: 'create',
+        component: CreateEmployeeComponent
+      },
+      {
+        path: '**',
+        redirectTo: ''
       }
     ]
   }

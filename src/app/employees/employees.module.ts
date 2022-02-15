@@ -4,16 +4,28 @@ import { CommonModule } from '@angular/common';
 import { EmployeesRoutingModule } from './employees-routing.module';
 import { ShowEmployeesComponent } from './views/show-employees/show-employees.component';
 import { EditEmployeeComponent } from './views/edit-employee/edit-employee.component';
+import { InputSearchComponent } from './components/input-search/input-search.component';
+import { TableEmployeesComponent } from './components/table-employees/table-employees.component';
+import { SharedModule } from '../shared/shared.module';
+import { CreateEmployeeComponent } from './views/create-employee/create-employee.component';
+import { BtnActionComponent } from './components/btn-action/btn-action.component';
+import { InputComponent } from './components/input/input.component';
 
 
 @NgModule({
   declarations: [
     ShowEmployeesComponent,
-    EditEmployeeComponent
+    EditEmployeeComponent,
+    InputSearchComponent,
+    TableEmployeesComponent,
+    CreateEmployeeComponent,
+    BtnActionComponent,
+    InputComponent
   ],
   imports: [
     CommonModule,
-    EmployeesRoutingModule
+    EmployeesRoutingModule,
+    SharedModule
   ]
 })
 export class EmployeesModule { }

@@ -1,0 +1,29 @@
+<div class="container">
+    
+    <p class="h1 pt-5">Nuevo Empleado</p>
+
+    <form class="row pt-4">
+        <div class="col">
+            <app-input label="Nombre" type="text"></app-input>
+            <app-input label="Fecha de nacimiento" type="date"></app-input>
+            <div class="mt-4">
+                <label for="SelectCountry" class="form-label">Pais</label>
+                <select class="form-select w-75" aria-label="Select country">
+                    <option selected>Seleccionar...</option>
+                    <option value="colombia">Colombia</option>
+                    <option value="venezuela">Venezuela</option>
+                </select>
+            </div>
+            <app-input label="Nombre de usuario" type="text"></app-input>
+            <app-input label="Fecha de contratacion" type="date"></app-input>
+            <label class="form-check-label" for="state">Estado</label>
+            <div class="form-check form-switch">
+                <input class="form-check-input size-checkbox" type="checkbox" role="switch" id="state">
+            </div>
+        </div>
+        <div class="col bg-secundary">
+            como
+        </div>
+    </form>
+
+</div>
