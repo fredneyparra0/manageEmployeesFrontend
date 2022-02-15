@@ -1,0 +1,34 @@
+<form class="row pt-4">
+    <div class="col">
+        <app-input *ngIf="typeForm === 'create' || typeForm === 'see'" label="Nombre" type="text"></app-input>
+        <app-input disableInput="typeForm" label="Fecha de nacimiento" type="date"></app-input>
+        <div class="mt-4"><app-option-select label="Pais"></app-option-select></div>
+        <app-input label="Nombre de usuario" type="text"></app-input>
+        <app-input label="Fecha de contratacion" type="date"></app-input>
+        <label class="form-check-label" for="state">Estado</label>
+        <app-input-checked [stateChecked]="stateChecked"></app-input-checked>
+    </div>
+    <div class="col bg-secundary pt-4">
+        <div class="btn-group d-flex justify-center" role="group" aria-label="select type">
+            <input (click)="changeTypeEmployee($event)" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="btnradio1">Administrativa</label>
+          
+            <input (click)="changeTypeEmployee($event)" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio2">Tecnologia</label>
+        </div>
+        <div class="mt-4">
+            <app-option-select label="Cargo"></app-option-select>
+        </div>
+        <div *ngIf="typeEmployee === 'administrativa'" class="w-25">
+            <app-input label="Comision %" type="number"></app-input>
+        </div>
+    </div>
+    <div class="d-flex align-items-center">
+        <div class="m-1">
+            <a [routerLink]="['/']">Atras</a>
+        </div>
+        <div class="m-1">
+            <app-btn [value]="valueBtn"></app-btn>
+        </div>
+    </div>
+</form>

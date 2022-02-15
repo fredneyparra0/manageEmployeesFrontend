@@ -13,6 +13,7 @@ import { InputComponent } from './components/input/input.component';
 import { OptionSelectComponent } from './components/option-select/option-select.component';
 import { RouterModule } from '@angular/router';
 import { InputCheckedComponent } from './components/input-checked/input-checked.component';
+import { FormComponent } from './components/form/form.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { InputCheckedComponent } from './components/input-checked/input-checked.
     BtnActionComponent,
     InputComponent,
     OptionSelectComponent,
-    InputCheckedComponent
+    InputCheckedComponent,
+    FormComponent
   ],
   imports: [
     CommonModule,
