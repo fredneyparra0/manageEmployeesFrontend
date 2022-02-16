@@ -12,7 +12,7 @@ export class OptionSelectComponent implements OnInit {
 
   @Input() label: string = '';
   @Input() valueOptions: string[] = [];
-  
+  @Input() typeForm: string = '';
   @Input() typeOption: string = '';
 
   constructor( private http: HttpClient ) { }
