@@ -15,7 +15,6 @@ export class FormComponent implements OnInit {
   stateChecked: boolean = true;
   typeEmployee: EmployeeType = 'administrativa';
 
-  @Input() valueBtn: ValueBtn = 'guardar'; // TODO: esto se debe eliminar y hacer en base a typeForm
   @Input() typeForm: TypeForm = 'create';
 
   positionAdministrative: string[] = ['Fundador y CEO', 'Recursos humanos'];
