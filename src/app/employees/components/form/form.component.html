@@ -1,25 +1,61 @@
-<form class="row pt-4">
+<form [formGroup]="formEmployee" class="row pt-4">
     <div class="col">
-        <app-input *ngIf="typeForm === 'create'" label="Nombre" type="text"></app-input>
-        <app-input disableInput="typeForm" label="Fecha de nacimiento" type="date"></app-input>
+        <div *ngIf="typeForm === 'create'">
+            <app-input 
+                label="Nombre" type="text"
+                [typeForm]="typeForm"
+            ></app-input>
+        </div>
+        <app-input 
+            disableInput="typeForm" 
+            label="Fecha de nacimiento" 
+            type="date"
+            [typeForm]="typeForm"
+        ></app-input>
         <div class="mt-4">
             <app-option-select 
                 label="Pais" 
                 [valueOptions]="countries" 
                 typeOption="countries"
+                [typeForm]="typeForm"
             ></app-option-select>
         </div>
-        <app-input label="Nombre de usuario" type="text"></app-input>
-        <app-input label="Fecha de contratacion" type="date"></app-input>
+        <app-input
+            label="Nombre de usuario"
+            type="text"
+            [typeForm]="typeForm"
+        ></app-input>
+        <app-input 
+            label="Fecha de contratacion" 
+            type="date"
+            [typeForm]="typeForm"
+        ></app-input>
         <label class="form-check-label" for="state">Estado</label>
         <app-input-checked [stateChecked]="stateChecked"></app-input-checked>
     </div>
     <div class="col bg-secundary pt-4">
         <div class="btn-group d-flex justify-center" role="group" aria-label="select type">
-            <input (click)="changeTypeEmployee($event)" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <input 
+                (click)="changeTypeEmployee($event)" 
+                type="radio" 
+                class="btn-check" 
+                name="btnradio" 
+                id="btnradio1" 
+                autocomplete="off"
+                checked
+                [disabled]="typeForm === 'detail' ? true : false"
+            >
             <label class="btn btn-outline-primary" for="btnradio1">Administrativa</label>
           
-            <input (click)="changeTypeEmployee($event)" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <input 
+                (click)="changeTypeEmployee($event)" 
+                type="radio" 
+                class="btn-check" 
+                name="btnradio" 
+                id="btnradio2" 
+                autocomplete="off"
+                [disabled]="typeForm === 'detail' ? true : false"
+            >
             <label class="btn btn-outline-primary" for="btnradio2">Tecnologia</label>
         </div>
         <div class="mt-4">
@@ -27,10 +63,15 @@
                 label="Cargo" 
                 typeOption="employee"
                 [valueOptions]="positions"
+                [typeForm]="typeForm"
             ></app-option-select>
         </div>
         <div *ngIf="typeEmployee === 'administrativa'" class="w-25">
-            <app-input label="Comision %" type="number"></app-input>
+            <app-input 
+                label="Comision %"
+                type="number"
+                [typeForm]="typeForm"
+            ></app-input>
         </div>
     </div>
     <div class="d-flex align-items-center">
