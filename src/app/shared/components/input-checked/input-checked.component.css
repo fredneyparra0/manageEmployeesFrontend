@@ -1,0 +1,9 @@
+.size-checkbox {
+    height: 2em;
+    width: 3em;
+}
+
+.form-check-input:checked {
+    background-color: var(--bs-success);
+    border-color: var(--bs-success);
+}
