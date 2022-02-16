@@ -10,6 +10,10 @@ export class InputComponent implements OnInit {
   @Input() label: string = '';
   @Input() placeHolder: string = '';
   @Input() type: string = 'text';
+  @Input() typeForm: string = '';
+  @Input() controlName: any = ''; 
+
+  isDisable: boolean = true;
 
   constructor() { }
 
