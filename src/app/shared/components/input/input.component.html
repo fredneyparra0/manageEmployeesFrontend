@@ -1,12 +1,11 @@
 <div class="mb-3 mt-4">
     <label [for]="label" class="form-label">{{ label }}</label>
     <input
-        *ngIf="typeForm !== 'detail'"   
+        *ngIf="typeForm !== 'detail'"  
+        [formControlName]="controlName" 
         [type]="type" 
         class="form-control w-75" 
         [id]="label" 
-        [placeholder]="placeHolder" 
-        [disabled]="typeForm === 'detail' ? true : false"
     >
     <input 
         *ngIf="typeForm === 'detail'" 

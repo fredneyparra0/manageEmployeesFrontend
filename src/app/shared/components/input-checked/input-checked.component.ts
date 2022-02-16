@@ -8,10 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 export class InputCheckedComponent implements OnInit {
 
   @Input() stateChecked: boolean = false;
+  @Input() controlName: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  changeState(e: any) {
+    this.stateChecked ? this.stateChecked = false : this.stateChecked = true; 
   }
 
 }
