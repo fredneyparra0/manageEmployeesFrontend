@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-type employeeType = 'administrativa' | 'tecnologia';
-type valueBtn = 'guardar' | 'actualizar';
-type typeForm = 'create' | 'update' | 'see';
+type EmployeeType = 'administrativa' | 'tecnologia';
+type ValueBtn = 'guardar' | 'actualizar';
+type TypeForm = 'create' | 'update' | 'detail';
 
 @Component({
   selector: 'app-form',
@@ -13,10 +13,10 @@ type typeForm = 'create' | 'update' | 'see';
 export class FormComponent implements OnInit {
 
   stateChecked: boolean = true;
-  typeEmployee: employeeType = 'administrativa';
+  typeEmployee: EmployeeType = 'administrativa';
 
-  @Input() valueBtn: valueBtn = 'guardar';
-  @Input() typeForm: typeForm = 'create';
+  @Input() valueBtn: ValueBtn = 'guardar'; // TODO: esto se debe eliminar y hacer en base a typeForm
+  @Input() typeForm: TypeForm = 'create';
 
   positionAdministrative: string[] = ['Fundador y CEO', 'Recursos humanos'];
   positiontechnology: string[] = ['Programador', 'Diseñador'];
@@ -47,6 +47,13 @@ export class FormComponent implements OnInit {
     this.http.get('http://api.countrylayer.com/v2/region/americas?access_key=88c9818e8c07fb9247acaf27943fa742')
       .subscribe((countries: any) => {
         this.countries = countries.map((countrie:any) => countrie.name);
+      }, (err: any) => {
+        if(err) {
+          this.http.get('assets/data/countries.json')
+            .subscribe((countries: any) => {
+              this.countries = countries.map((countrie:any) => countrie.name);
+            })
+        }
       })
   }
 
