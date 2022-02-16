@@ -1,6 +1,6 @@
 <form class="row pt-4">
     <div class="col">
-        <app-input *ngIf="typeForm === 'create' || typeForm === 'detail'" label="Nombre" type="text"></app-input>
+        <app-input *ngIf="typeForm === 'create'" label="Nombre" type="text"></app-input>
         <app-input disableInput="typeForm" label="Fecha de nacimiento" type="date"></app-input>
         <div class="mt-4">
             <app-option-select 
@@ -37,7 +37,7 @@
         <div class="m-1">
             <a [routerLink]="['/']">Atras</a>
         </div>
-        <div class="m-1">
+        <div *ngIf="typeForm != 'detail'" class="m-1">
             <app-btn [value]="typeForm === 'create' ? 'Guardar' : 'Actualizar'"></app-btn>
         </div>
     </div>

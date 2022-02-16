@@ -15,6 +15,7 @@ import { OptionSelectComponent } from '../shared/components/option-select/option
 import { RouterModule } from '@angular/router';
 import { InputCheckedComponent } from '../shared/components/input-checked/input-checked.component';
 import { FormComponent } from './components/form/form.component';
+import { ShowEmployeeComponent } from './views/show-employee/show-employee.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { FormComponent } from './components/form/form.component';
     OptionSelectComponent,
     InputCheckedComponent,
     FormComponent,
+    ShowEmployeeComponent,
   ],
   imports: [
     CommonModule,
