@@ -10,6 +10,7 @@ export class BtnComponent implements OnInit {
   @Input() value: string = '';
   @Input() icon: string = '';
   @Input() type: string = 'button';
+  @Input() isDisable: boolean = false;
 
   constructor() { }
 

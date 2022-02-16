@@ -1,9 +1,10 @@
-<form [formGroup]="formEmployee" class="row pt-4">
+<form [formGroup]="formEmployee" (ngSubmit)="onSubmit()" class="row pt-4">
     <div class="col">
         <div *ngIf="typeForm === 'create'">
             <app-input 
                 label="Nombre" type="text"
                 [typeForm]="typeForm"
+                controlName="name"
             ></app-input>
         </div>
         <app-input 
@@ -11,6 +12,7 @@
             label="Fecha de nacimiento" 
             type="date"
             [typeForm]="typeForm"
+            controlName="dateOfBirthday"
         ></app-input>
         <div class="mt-4">
             <app-option-select 
@@ -18,17 +20,20 @@
                 [valueOptions]="countries" 
                 typeOption="countries"
                 [typeForm]="typeForm"
+                controlName="countrie"
             ></app-option-select>
         </div>
         <app-input
             label="Nombre de usuario"
             type="text"
             [typeForm]="typeForm"
+            controlName="username"
         ></app-input>
         <app-input 
             label="Fecha de contratacion" 
             type="date"
             [typeForm]="typeForm"
+            controlName="hiringDate"
         ></app-input>
         <label class="form-check-label" for="state">Estado</label>
         <app-input-checked [stateChecked]="stateChecked"></app-input-checked>
@@ -36,7 +41,7 @@
     <div class="col bg-secundary pt-4">
         <div class="btn-group d-flex justify-center" role="group" aria-label="select type">
             <input 
-                (click)="changeTypeEmployee($event)" 
+                (click)="changeTypeEmployee($event)"
                 type="radio" 
                 class="btn-check" 
                 name="btnradio" 
@@ -45,10 +50,10 @@
                 checked
                 [disabled]="typeForm === 'detail' ? true : false"
             >
-            <label class="btn btn-outline-primary" for="btnradio1">Administrativa</label>
+            <label class="btn btn-outline-primary" for="btnradio1">Administrativas</label>
           
             <input 
-                (click)="changeTypeEmployee($event)" 
+                (click)="changeTypeEmployee($event)"
                 type="radio" 
                 class="btn-check" 
                 name="btnradio" 
@@ -58,12 +63,14 @@
             >
             <label class="btn btn-outline-primary" for="btnradio2">Tecnologia</label>
         </div>
+
         <div class="mt-4">
             <app-option-select 
                 label="Cargo" 
                 typeOption="employee"
                 [valueOptions]="positions"
                 [typeForm]="typeForm"
+                controlName="position"
             ></app-option-select>
         </div>
         <div *ngIf="typeEmployee === 'administrativa'" class="w-25">
@@ -71,6 +78,7 @@
                 label="Comision %"
                 type="number"
                 [typeForm]="typeForm"
+                controlName="comission"
             ></app-input>
         </div>
     </div>
@@ -79,7 +87,7 @@
             <a [routerLink]="['/']">Atras</a>
         </div>
         <div *ngIf="typeForm != 'detail'" class="m-1">
-            <app-btn [value]="typeForm === 'create' ? 'Guardar' : 'Actualizar'"></app-btn>
+            <app-btn [isDisable]="formEmployee.valid" type="submit" [value]="typeForm === 'create' ? 'Guardar' : 'Actualizar'"></app-btn>
         </div>
     </div>
 </form>

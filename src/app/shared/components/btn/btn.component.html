@@ -1,4 +1,4 @@
-<button [type]="type" class="btn btn-primary mt-3">
+<button [disabled]="isDisable" [type]="type" class="btn btn-primary mt-3">
     <span *ngIf="icon" class="p-1">{{ icon }}</span>
     {{ value }}
 </button>

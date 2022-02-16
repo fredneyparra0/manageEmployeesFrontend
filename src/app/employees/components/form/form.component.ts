@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { EmployeeService } from '../../services/employee.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-
 type EmployeeType = 'administrativa' | 'tecnologia';
 type TypeForm = 'create' | 'update' | 'detail';
 
@@ -20,8 +19,8 @@ export class FormComponent implements OnInit {
     countrie: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),
     hiringDate: new FormControl('', [Validators.required]),
-    state: new FormControl('', [Validators.required]),
-    areaOfWork: new FormControl('', [Validators.required]),
+    state: new FormControl(false, [Validators.required]),
+    areaOfWork: new FormControl('administrativa', [Validators.required]),
     position: new FormControl('', [Validators.required]),
     comission: new FormControl('', [Validators.required])
   })
@@ -43,6 +42,10 @@ export class FormComponent implements OnInit {
     this.changePosition();
   }
 
+  onSubmit() {
+    console.log(this.formEmployee.value);
+  }
+
   changePosition() {
     this.typeEmployee === 'administrativa' 
     ? this.positions = [...this.positionAdministrative] 
@@ -50,7 +53,13 @@ export class FormComponent implements OnInit {
   }
 
   changeTypeEmployee(e: any) {
-    e.target.id === 'btnradio1' ? this.typeEmployee = 'administrativa' : this.typeEmployee = 'tecnologia'; 
+    if(e.target.id === 'btnradio1') {
+      this.typeEmployee = 'administrativa'
+      this.formEmployee.value.areaOfWork = 'administrativa'
+    } else {
+      this.typeEmployee = 'tecnologia'
+      this.formEmployee.value.areaOfWork = 'tecnologia'
+    }
     this.changePosition();
   }
 
