@@ -1,5 +1,9 @@
 <label [for]="label" class="form-label">{{ label }}</label>
-<select class="form-select w-75" [disabled]="typeForm === 'detail' ? true : false">
+<select *ngIf="typeForm !== 'detail'" class="form-select w-75" [formControlName]="controlName">
+    <option selected>Seleccionar...</option>
+    <option *ngFor="let value of valueOptions" [value]="value">{{ value | titlecase }}</option>
+</select>
+<select *ngIf="typeForm === 'detail'" class="form-select w-75" [disabled]="typeForm === 'detail' ? true : false">
     <option selected>Seleccionar...</option>
     <option *ngFor="let value of valueOptions" [value]="value">{{ value | titlecase }}</option>
 </select>
