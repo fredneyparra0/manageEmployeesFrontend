@@ -1,28 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { EMPLOYEES_ROUTES } from 'src/app/core/contants/http-routes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
-  constructor( ) { }
+  constructor( private http: HttpClient ) { }
 
   getAllEmployes() {
-    return [
-      {
-        name: "fredney",
-        position: "Fundador y Ceo",
-        age: 40,
-        hiringDate: new Date()
-      },
-      {
-        name: "federico",
-        position: "Desarrollador",
-        age: 22,
-        hiringDate: new Date()
-      }
-    ]
+    this.http.get(`${environment.apiUrl + EMPLOYEES_ROUTES.getAll }`)
+      .subscribe(e => {
+        console.log(e)
+      })
   }
 
 }
