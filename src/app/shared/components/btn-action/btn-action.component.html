@@ -1,3 +1,7 @@
-<span [routerLink]="[this.route, 'acavaid']" class="p-1 cursor-pointer">
+<span *ngIf="type === 'delete'" (click)="onClikDelete()" class="p-1 cursor-pointer">
+    <img [src]="url"/>
+</span>
+
+<span *ngIf="type !== 'delete'" [routerLink]="[this.route, paramRoute]" class="p-1 cursor-pointer">
     <img [src]="url"/>
 </span>
