@@ -9,14 +9,15 @@ export class InputCheckedComponent implements OnInit {
 
   @Input() stateChecked: boolean = false;
   @Input() controlName: boolean = false;
+  @Input() typeForm: string = '';
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  changeState(e: any) {
-    this.stateChecked ? this.stateChecked = false : this.stateChecked = true; 
+  onClickChange(e:any) {
+    this.controlName = e.target.checked;
   }
 
 }
