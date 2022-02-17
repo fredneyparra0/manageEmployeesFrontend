@@ -22,11 +22,8 @@ export class FormComponent implements OnInit {
     state: new FormControl(false, [Validators.required]),
     areaOfWork: new FormControl('administrativa', [Validators.required]),
     position: new FormControl('', [Validators.required]),
-    comission: new FormControl('', [Validators.required])
+    comission: new FormControl('')
   })
-
-  stateChecked: boolean = true;
-  typeEmployee: EmployeeType = 'administrativa';
 
   @Input() typeForm: TypeForm = 'create';
 
@@ -47,17 +44,15 @@ export class FormComponent implements OnInit {
   }
 
   changePosition() {
-    this.typeEmployee === 'administrativa' 
-    ? this.positions = [...this.positionAdministrative] 
-    : this.positions = [...this.positiontechnology]  
+    this.formEmployee.value.areaOfWork === 'administrativa' 
+      ? this.positions = this.positionAdministrative 
+      : this.positions = this.positiontechnology  
   }
 
-  changeTypeEmployee(e: any) {
-    if(e.target.id === 'btnradio1') {
-      this.typeEmployee = 'administrativa'
+  changeTypeEmployee(e: MouseEvent ) {
+    if((e.target as HTMLInputElement).id === 'btnradio1') {
       this.formEmployee.value.areaOfWork = 'administrativa'
     } else {
-      this.typeEmployee = 'tecnologia'
       this.formEmployee.value.areaOfWork = 'tecnologia'
     }
     this.changePosition();

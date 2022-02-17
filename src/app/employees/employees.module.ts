@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
 
 import { EmployeesRoutingModule } from './employees-routing.module';
 import { ShowEmployeesComponent } from './views/show-employees/show-employees.component';
@@ -39,7 +37,6 @@ import { ShowEmployeeComponent } from './views/show-employee/show-employee.compo
     EmployeesRoutingModule,
     SharedModule,
     RouterModule,
-    HttpClientModule,
     ReactiveFormsModule
   ]
 })

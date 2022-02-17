@@ -36,7 +36,7 @@
             controlName="hiringDate"
         ></app-input>
         <label class="form-check-label" for="state">Estado</label>
-        <app-input-checked [stateChecked]="stateChecked"></app-input-checked>
+        <app-input-checked [typeForm]="typeForm"></app-input-checked>
     </div>
     <div class="col bg-secundary pt-4">
         <div class="btn-group d-flex justify-center" role="group" aria-label="select type">
@@ -50,7 +50,7 @@
                 checked
                 [disabled]="typeForm === 'detail' ? true : false"
             >
-            <label class="btn btn-outline-primary" for="btnradio1">Administrativas</label>
+            <label class="btn btn-outline-primary" for="btnradio1">Administrativa</label>
           
             <input 
                 (click)="changeTypeEmployee($event)"
@@ -73,7 +73,7 @@
                 controlName="position"
             ></app-option-select>
         </div>
-        <div *ngIf="typeEmployee === 'administrativa'" class="w-25">
+        <div *ngIf="formEmployee.value.areaOfWork === 'administrativa'" class="w-25">
             <app-input 
                 label="Comision %"
                 type="number"
@@ -87,7 +87,7 @@
             <a [routerLink]="['/']">Atras</a>
         </div>
         <div *ngIf="typeForm != 'detail'" class="m-1">
-            <app-btn [isDisable]="formEmployee.valid" type="submit" [value]="typeForm === 'create' ? 'Guardar' : 'Actualizar'"></app-btn>
+            <app-btn [isDisable]="!formEmployee.valid" type="submit" [value]="typeForm === 'create' ? 'Guardar' : 'Actualizar'"></app-btn>
         </div>
     </div>
 </form>

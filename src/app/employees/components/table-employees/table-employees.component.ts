@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-table-employees',
@@ -7,11 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableEmployeesComponent implements OnInit {
 
-  fieldsTable: any[] = ['Nombre (Cargo)', 'Edad', 'Fecha de contratacion', 'Acciones'];
-
-  constructor() { }
+  constructor( private employeeService: EmployeeService ) { }
 
   ngOnInit(): void {
+    this.employeeService.getAllEmployes()
   }
 
 }
