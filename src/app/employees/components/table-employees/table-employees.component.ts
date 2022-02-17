@@ -16,8 +16,17 @@ export class TableEmployeesComponent implements OnInit {
     this.employeeService.getAllEmployes()
       .subscribe((e:any) => {
         this.employees = e.data;
-        console.log(this.employees);
       })
   }
+
+  reloadEmployees(e: any) {
+    if(e === 'reload'){
+      this.employeeService.getAllEmployes()
+      .subscribe((e:any) => {
+        this.employees = e.data;
+      })
+    }
+  }
+
 
 }

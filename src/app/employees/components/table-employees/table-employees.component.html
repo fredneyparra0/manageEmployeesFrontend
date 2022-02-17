@@ -26,6 +26,7 @@
               url="../../../../assets/images/editIcon.png"
             ></app-btn-action>
             <app-btn-action 
+            (isReload)="reloadEmployees($event)"
               type="delete"
               url="../../../../assets/images/deleteIcon.png"
               [paramRoute]="employee.id"

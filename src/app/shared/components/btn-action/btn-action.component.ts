@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EmployeeService } from 'src/app/employees/services/employee.service';
  
@@ -18,6 +18,8 @@ export class BtnActionComponent implements OnInit {
   @Input() route: string = '';
   @Input() paramRoute:  string = '';
 
+  @Output() isReload: EventEmitter<string> = new EventEmitter();
+
   constructor( 
     private router: Router,
     private serviceEmployee: EmployeeService
@@ -29,7 +31,7 @@ export class BtnActionComponent implements OnInit {
   onClikDelete() {
     this.serviceEmployee.deleteOneEmployee(parseFloat(this.paramRoute))
       .subscribe((e: any) => {
-        console.log(e);
+        this.isReload.emit('reload');
       })
     
     console.log(this.paramRoute)
