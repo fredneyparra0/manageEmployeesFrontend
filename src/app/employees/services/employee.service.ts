@@ -11,10 +11,11 @@ export class EmployeeService {
   constructor( private http: HttpClient ) { }
 
   getAllEmployes() {
-    this.http.get(`${environment.apiUrl + EMPLOYEES_ROUTES.getAll }`)
-      .subscribe(e => {
-        console.log(e)
-      })
+    return this.http.get(`${environment.apiUrl + EMPLOYEES_ROUTES.getAll }`);
+  }
+
+  deleteOneEmployee(id: number) {
+    return this.http.delete(`${environment.apiUrl + EMPLOYEES_ROUTES.delete }/${id}`);
   }
 
 }
