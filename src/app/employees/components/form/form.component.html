@@ -13,6 +13,7 @@
             type="date"
             [typeForm]="typeForm"
             controlName="dateofBirthday"
+            [valueRef]="formEmployee.value.dateofBirthday"
         ></app-input>
         <div class="mt-4">
             <app-option-select 
@@ -21,6 +22,7 @@
                 typeOption="countries"
                 [typeForm]="typeForm"
                 controlName="countrie"
+                [valueRef]="formEmployee.value.countrie"
             ></app-option-select>
         </div>
         <app-input
@@ -28,12 +30,14 @@
             type="text"
             [typeForm]="typeForm"
             controlName="username"
+            [valueRef]="formEmployee.value.username"
         ></app-input>
         <app-input 
             label="Fecha de contratacion" 
             type="date"
             [typeForm]="typeForm"
             controlName="hiringDate"
+            [valueRef]="formEmployee.value.hiringDate"
         ></app-input>
         <label class="form-check-label" for="state">Estado</label>
         <app-input-checked [typeForm]="typeForm"></app-input-checked>
@@ -71,6 +75,7 @@
                 [valueOptions]="positions"
                 [typeForm]="typeForm"
                 controlName="position"
+                [valueRef]="formEmployee.value.position"
             ></app-option-select>
         </div>
         <div *ngIf="formEmployee.value.areaOfWork === 'administrativa'" class="w-25">
@@ -79,6 +84,7 @@
                 type="number"
                 [typeForm]="typeForm"
                 controlName="comission"
+                [valueRef]="formEmployee.value.comission"
             ></app-input>
         </div>
     </div>

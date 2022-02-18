@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EmployeeService } from '../../services/employee.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 type TypeForm = 'create' | 'update' | 'detail';
 
@@ -25,6 +25,8 @@ export class FormComponent implements OnInit {
     comission: new FormControl(0)
   })
 
+  @Output() nameEmployee: EventEmitter<any> = new EventEmitter(); 
+
   @Input() typeForm: TypeForm = 'create';
 
   positionAdministrative: string[] = ['Fundador y CEO', 'Recursos humanos'];
@@ -35,12 +37,14 @@ export class FormComponent implements OnInit {
   constructor( 
     private http: HttpClient,
     private serviceEmployee: EmployeeService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.loadCountries();
     this.changePosition();
+    this.loadDataDetail();
   }
 
   onSubmit() {
@@ -48,6 +52,10 @@ export class FormComponent implements OnInit {
       .subscribe((e: any) => {
         this.router.navigate(['/'])
       })
+  }
+
+  changePositionDetail() {
+    this.positions = this.formEmployee.value.areaOfWork; 
   }
 
   changePosition() {
@@ -75,6 +83,20 @@ export class FormComponent implements OnInit {
               this.countries = countries.map((countrie:any) => countrie.name);
             })
       })
+  }
+
+  loadDataDetail() {
+    if(this.typeForm === 'detail') {
+      this.activatedRoute.params.subscribe((params: any) => {
+        this.serviceEmployee.getEmployeeById(params.id)
+          .subscribe((e:any) => {
+            this.formEmployee.patchValue(e.data);
+            this.nameEmployee.emit(this.formEmployee.value.name);
+            this.changePositionDetail();
+          })
+      });
+      // this.serviceEmployee.getEmployeeById(this.activatedRoute.params.)
+    }
   }
 
 }
