@@ -1,9 +1,10 @@
 <div class="container">
     
-    <p class="h1 pt-5">Editar: Fredney Parra</p>
+    <p class="h1 pt-5">Ver: {{ nameEmployee | titlecase }}</p>
 
     <app-form
         typeForm="detail" 
+        (nameEmployee)="loadComponent($event)"
     ></app-form>
 
 </div>

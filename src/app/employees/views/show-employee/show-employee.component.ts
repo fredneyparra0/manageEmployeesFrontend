@@ -9,7 +9,14 @@ export class ShowEmployeeComponent implements OnInit {
 
   constructor() { }
 
+  nameEmployee: string = '';
+
   ngOnInit(): void {
+    this.loadComponent
+  }
+
+  loadComponent(e:any) {
+    this.nameEmployee = e;
   }
 
 }
