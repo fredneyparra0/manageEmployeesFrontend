@@ -19,6 +19,7 @@ export class OptionSelectComponent implements OnInit {
   @Input() typeForm: string = '';
   @Input() typeOption: string = '';
   @Input() controlName: string = '';
+  @Input() valueRef: string = '';
 
   constructor( private http: HttpClient ) { }
 
