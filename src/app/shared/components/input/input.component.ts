@@ -16,6 +16,7 @@ export class InputComponent implements OnInit {
   @Input() type: string = 'text';
   @Input() typeForm: string = '';
   @Input() controlName: any = ''; 
+  @Input() valueRef: string | boolean = '';
 
   isDisable: boolean = true;
 
