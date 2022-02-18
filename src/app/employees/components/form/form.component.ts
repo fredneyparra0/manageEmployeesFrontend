@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EmployeeService } from '../../services/employee.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
-type EmployeeType = 'administrativa' | 'tecnologia';
 type TypeForm = 'create' | 'update' | 'detail';
 
 @Component({
@@ -15,14 +15,14 @@ export class FormComponent implements OnInit {
 
   formEmployee = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    dateOfBirthday: new FormControl('', [Validators.required]),
+    dateofBirthday: new FormControl('', [Validators.required]),
     countrie: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),
     hiringDate: new FormControl('', [Validators.required]),
-    state: new FormControl(false, [Validators.required]),
+    state: new FormControl(true, [Validators.required]),
     areaOfWork: new FormControl('administrativa', [Validators.required]),
     position: new FormControl('', [Validators.required]),
-    comission: new FormControl('')
+    comission: new FormControl(0)
   })
 
   @Input() typeForm: TypeForm = 'create';
@@ -32,7 +32,11 @@ export class FormComponent implements OnInit {
   positions: string[] = [];
   countries: string[] = [];
 
-  constructor( private http: HttpClient, private serviceEmployee: EmployeeService ) { }
+  constructor( 
+    private http: HttpClient,
+    private serviceEmployee: EmployeeService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.loadCountries();
@@ -40,7 +44,10 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formEmployee.value);
+    this.serviceEmployee.createNewEmployee(this.formEmployee.value)
+      .subscribe((e: any) => {
+        this.router.navigate(['/'])
+      })
   }
 
   changePosition() {
