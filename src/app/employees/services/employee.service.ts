@@ -25,4 +25,8 @@ export class EmployeeService {
     })
   }
 
+  getEmployeeById(id: number) {
+    return this.http.get(`${environment.apiUrl + EMPLOYEES_ROUTES.getById }/${id}`)
+  }
+
 }
