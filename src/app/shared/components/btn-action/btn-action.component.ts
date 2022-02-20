@@ -34,7 +34,6 @@ export class BtnActionComponent implements OnInit {
         this.isReload.emit('reload');
       })
     
-    console.log(this.paramRoute)
   }
 
 }

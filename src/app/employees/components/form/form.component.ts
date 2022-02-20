@@ -33,6 +33,8 @@ export class FormComponent implements OnInit {
   positiontechnology: string[] = ['Programador', 'Diseñador'];
   positions: string[] = [];
   countries: string[] = [];
+  isCheckedAdministrate: boolean = true;
+  isCheckedTechnology: boolean = false;
 
   constructor( 
     private http: HttpClient,
@@ -48,14 +50,19 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.serviceEmployee.createNewEmployee(this.formEmployee.value)
-      .subscribe((e: any) => {
-        this.router.navigate(['/'])
+    if(this.typeForm === 'create') {
+      this.serviceEmployee.createNewEmployee(this.formEmployee.value)
+        .subscribe((e: any) => {
+          this.router.navigate(['/'])
+        })
+    } else if (this.typeForm === 'update') {
+      this.activatedRoute.params.subscribe((params: any) => {
+        this.serviceEmployee.updateEmployee(params.id, this.formEmployee.value)
+          .subscribe((e: any) => {
+            this.router.navigate(['/'])
+          })
       })
-  }
-
-  changePositionDetail() {
-    this.positions = this.formEmployee.value.areaOfWork; 
+    }
   }
 
   changePosition() {
@@ -86,13 +93,19 @@ export class FormComponent implements OnInit {
   }
 
   loadDataDetail() {
-    if(this.typeForm === 'detail') {
+    if(this.typeForm === 'detail' || this.typeForm === 'update') {
       this.activatedRoute.params.subscribe((params: any) => {
         this.serviceEmployee.getEmployeeById(params.id)
           .subscribe((e:any) => {
             this.formEmployee.patchValue(e.data);
             this.nameEmployee.emit(this.formEmployee.value.name);
-            this.changePositionDetail();
+            if(e.data.areaOfWork === 'administrativa') {
+              this.isCheckedAdministrate = true;
+              this.isCheckedTechnology = false;
+            } else {
+              this.isCheckedAdministrate = false;
+              this.isCheckedTechnology = true;
+            }
           })
       });
       // this.serviceEmployee.getEmployeeById(this.activatedRoute.params.)

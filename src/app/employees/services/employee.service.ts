@@ -29,4 +29,8 @@ export class EmployeeService {
     return this.http.get(`${environment.apiUrl + EMPLOYEES_ROUTES.getById }/${id}`)
   }
 
+  updateEmployee(id:number, data: IEmployee) {
+    return this.http.put(`${environment.apiUrl + EMPLOYEES_ROUTES.update }/${id}`, { data })
+  }
+
 }

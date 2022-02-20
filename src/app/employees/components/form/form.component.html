@@ -51,7 +51,7 @@
                 name="btnradio" 
                 id="btnradio1" 
                 autocomplete="off"
-                checked
+                [checked]="isCheckedAdministrate"
                 [disabled]="typeForm === 'detail' ? true : false"
             >
             <label class="btn btn-outline-primary" for="btnradio1">Administrativa</label>
@@ -63,6 +63,7 @@
                 name="btnradio" 
                 id="btnradio2" 
                 autocomplete="off"
+                [checked]="isCheckedTechnology"
                 [disabled]="typeForm === 'detail' ? true : false"
             >
             <label class="btn btn-outline-primary" for="btnradio2">Tecnologia</label>
